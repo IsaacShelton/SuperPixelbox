@@ -1,0 +1,21 @@
+
+:root {
+    --body-background-color: #CCCCCC;
+    --body-foreground-color: grey;
+    --pane-background-color: #CCCCCC;
+    --pane-separator-color: #AAAAAA;
+    --pane-separator-dots-color: grey;
+    --dropdown-link-color: #BBBBBB;
+    --dropdown-link-hover-color: #DDDDDD;
+    --dropdown-item-color: #CCCCCC;
+    --dropdown-item-hover-color: #DDDDDD;
+    --dropdown-button-color: #AAAAAA;
+    --dropdown-button-hover-color: #AFAFAF;
+    --dropdown-button-text-color: grey;
+    --dropdown-text-color: grey;
+}
+
+.panes-separator {
+    border-radius: 16px;
+    height: 98%;
+}

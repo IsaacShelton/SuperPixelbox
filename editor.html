@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cdn.rawgit.com/lingtalfi/simpledrag/master/simpledrag.js https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js;">
+    <title>Super Pixelbox</title>
+    <script src="https://cdn.rawgit.com/lingtalfi/simpledrag/master/simpledrag.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles-pixelbox.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script src="editor.js" defer></script>
+</head>
+
+<body id="body">
+    <p style="font-family: Arial, Helvetica, sans-serif;margin-top: 4px;margin-left: 8px;font-size: 14px;">
+        Menu
+        <span style="padding-left:12px;"></span>
+        Assets
+        <span style="padding-left:12px;"></span>
+        View
+        <span style="padding-left:12px;"></span>
+        Project
+        <span style="padding-left:12px;"></span>
+        Debug
+        <span style="padding-left:12px;"></span>
+        <span onclick="run();">Run</span>
+    </p>
+    <div class="panes-container">
+        <!--
+        <div class="left-pane noselect" id="left-pane">
+            <ul>
+                <a href="#">- view</a>
+                <ul>
+                    <li><a href="#">assets</a></li>
+                    <li><a href="#">map editor</a></li>
+                    <li><a href="#">map clipboard</a></li>
+                    <li><a href="#">tilesheet</a></li>
+                    <li><a href="#">sprite editor</a></li>
+                    <li><a href="#">palette</a></li>
+                    <li><a href="#">tile brushes</a></li>
+                    <li><a href="#">console</a></li>
+                    <li>---------------</li>
+                    <li><a href="#">music tracker</a></li>
+                    <li><a href="#">bleeper sfx editor</a></li>
+                    <li>---------------</li>
+                    <li><a onclick="mainWindow.webContents.openDevTools();">toggle devtools</a></li>
+                    <li><a href="#">about</a></li>
+                </ul>
+            </ul>
+            <ul>
+                <a href="#">- project</a>
+                <ul>
+                    <li><a href="#">settings</a></li>
+                    <li><a href="#">update libraries</a></li>
+                    <li>---------------</li>
+                    <li><a href="#">open src</a></li>
+                    <li><a href="#">open assets</a></li>
+                    <li><a href="#">open audio</a></li>
+                    <li>---------------</li>
+                    <li><a href="#">build archive</a></li>
+                    <li><a href="#">electron prebuild</a></li>
+                </ul>
+            </ul>
+            <ul>
+                <a href="#">- debug</a>
+                <ul>
+                    <li><a href="#">devtool - on</a></li>
+                    <li><a href="#">copy local server url</a></li>
+                    <li><a href="#">stop local server</a></li>
+                </ul>
+            </ul>
+            <ul>
+                <a href="#">- run</a>
+            </ul>
+            <ul>
+                <a href="#">- assets</a>
+                <ul>
+                    <li>
+                        <a href="#">maps.json</a>
+                        <br />
+                        <ul>
+                            <li><a href="#">foreground</a></li>
+                            <li><a href="#">background</a></li>
+                            <li><a href="#">deathbackground</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">palette.png</a></li>
+                    <li><a href="#">tilesheet.png</a></li>
+                </ul>
+            </ul>
+        </div>
+        -->
+        <div class="left-pane" id="left-pane">
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Switch View</button>
+                <div class="dropdown-content">
+                    <a onclick="swapPaneView('left-pane', 'addMapEditorHere');closeDropdowns();">Map Editor</a>
+                    <a onclick="swapPaneView('left-pane', 'addTilesheetEditorHere');closeDropdowns();">Tilesheet</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Sprite Editor</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">...</a>
+                </div>
+            </div>
+            <span style="padding-left:12px;"></span>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Map</button>
+                <div class="dropdown-content">
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Load</a>
+                    <a onclick="saveMap();closeDropdowns();">Save</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Clear</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Delete</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Undo</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Redo</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Map Settings</button>
+                <div class="dropdown-content">
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Name</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Dimensions</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Tilesheet</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Layers</button>
+                <div class="dropdown-content">
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Units - ✓</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Structures - ✓</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Terrain - ⦰</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">...</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Tools</button>
+                <div class="dropdown-content">
+                    <!--<a onclick="alert('unimplemented!');closeDropdowns();">Box Select - S</a>-->
+                    <!--<a onclick="alert('unimplemented!');closeDropdowns();">Freehand Select - M</a>-->
+                    <a onclick="useBrush();closeDropdowns();">Brush - D</a>
+                    <a onclick="useBucket();closeDropdowns();">Bucket - F</a>
+                </div>
+            </div>
+            <br />
+            <div style="margin: 0 auto;">
+                <div id="addMapEditorHere" class="editorContainer">
+                    <!-- add map editor here -->
+                </div>
+            </div>
+        </div>
+        <div class="panes-separator noselect" id="panes-separator">.<br />.<br />.</div>
+        <div class="right-pane" id="right-pane">
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Switch View</button>
+                <div class="dropdown-content">
+                    <a onclick="swapPaneView('right-pane', 'addMapEditorHere');closeDropdowns();">Map Editor</a>
+                    <a onclick="swapPaneView('right-pane', 'addTilesheetEditorHere');closeDropdowns();">Tilesheet</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Sprite Editor</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">...</a>
+                </div>
+            </div>
+            <span style="padding-left:12px;"></span>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Tilesheet</button>
+                <div class="dropdown-content">
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Load</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Delete</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="allowOpenDropdowns();">
+                <button class="dropbtn">Tilesheet Settings</button>
+                <div class="dropdown-content">
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Name</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Dimensions</a>
+                    <a onclick="alert('unimplemented!');closeDropdowns();">Pixels per Tile</a>
+                </div>
+            </div>
+            <br />
+            <div style="margin: 0 auto;">
+                <div id="addTilesheetEditorHere" class="editorContainer">
+                    <!-- add tilesheet editor here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

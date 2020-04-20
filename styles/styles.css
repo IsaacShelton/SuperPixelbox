@@ -1,0 +1,248 @@
+
+body {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.panes-container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.left-pane {
+    width: 50%;
+    background: var(--pane-background-color);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.right-pane {
+    flex: auto;
+    width: 50%;
+    background: var(--pane-background-color);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.left-pane::-webkit-scrollbar,
+.right-pane::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.left-pane,
+.right-pane {
+    -ms-overflow-style: none;
+}
+
+body {
+    overflow: hidden;
+    background-color: var(--body-background-color);
+    color: var(--body-foreground-color);
+}
+
+.noselect {
+    /* iOS Safari */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Konqueror HTML */
+    -khtml-user-select: none;
+    /* Old versions of Firefox */
+    -moz-user-select: none;
+    /* Internet Explorer/Edge */
+    -ms-user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+    user-select: none;
+}
+
+.panes-container {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 24px;
+    height: calc(100% - 24px);
+}
+
+.panes-separator {
+    width: 16px;
+    background: var(--pane-separator-color);
+    position: relative;
+    cursor: col-resize;
+    text-align: center;
+    color: var(--pane-separator-dots-color);
+    display: flex;
+    /* align horizontal */
+    justify-content: center;
+    /* align vertical */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.left-pane,
+.right-pane {
+    margin: 0;
+    padding-left: 6px;
+    height: 100%;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: var(--dropdown-button-color);
+    color: var(--dropdown-button-text-color);
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 16px;
+    margin-top: 16px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+    z-index: 11;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--dropdown-item-color);
+    font-family: Arial, Helvetica, sans-serif;
+    /*min-width: 160px;*/
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: var(--dropdown-text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--dropdown-item-hover-color);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: var(--dropdown-button-hover-color);
+}
+
+.spritesheet {
+    position: relative;
+    margin: auto;
+
+    /* Enable checker background for spritesheet */
+    background-image: url(../img/checker.png);
+    background-repeat: repeat;
+    background-size: 6px 6px;
+}
+
+.spritesheetInner {
+    position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.spritesheetGrid {
+    background-repeat: repeat;
+    image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+canvas {
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+.spritesheetCursor {
+	position: absolute;
+	top: -4px;
+	left: -4px;
+    z-index: 10;
+    
+    border: solid 2px #F00;
+    border-radius: 4px;
+    animation: cursor-animation 0.9s infinite;
+}
+
+.spritesheetCursor canvas {
+    background-image: url(../img/checker.png);
+    background-repeat: repeat;
+    background-size: 6px 6px;
+
+    margin: 2px;
+    border: solid 1px #FFF;
+    display: block;
+}
+
+@keyframes cursor-animation {
+    0% { border-color: #F00; }
+	50% { border-color: #0CF; }
+	100% { border-color: #F00; }
+}
+
+.mapClipSurface {
+	position: relative;
+    overflow: hidden;
+
+    /* Enable checker background for map */
+    background-image: url(../img/checker.png);
+    background-repeat: repeat;
+    background-size: 6px 6px;
+}
+
+.mapCanvas {
+	position: absolute;
+	left: 0;
+    top: 0;
+}
+
+.mapGrid {
+	/*position: absolute;
+	left: 0;
+	top: 0;*/
+	pointer-events: none;
+	background-repeat: repeat;
+	z-index: 2;
+}
+
+.editorContainer {
+    display: table;
+    margin: 0 auto;    
+}
