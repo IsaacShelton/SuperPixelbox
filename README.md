@@ -19,5 +19,8 @@ electron .
 ### Editor Controls:
 - Left Click - Draw with tool
 - Right Click - Erase with tool
-- Middle or Forward Mouse Button - pan
-- Scroll Wheel - zoom
+- Middle or Forward Mouse Button - Pan
+- Scroll Wheel - Zoom
+
+### Notice:
+This project is a work in progress, pull requests welcome!
