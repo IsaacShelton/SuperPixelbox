@@ -1,7 +1,7 @@
 {
-  "name": "pixelboxui",
+  "name": "super-pixelbox",
   "version": "1.0.0",
-  "description": "Custom UI for Pixelbox Framework",
+  "description": "An improved editor for developing HTML5 games with the Pixelbox framework",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
